@@ -53,6 +53,7 @@ group :development do
   gem 'faker'
   gem 'rubocop', require:false
   gem 'rubocop-rails', require:false
+  gem 'pre-commit', require:false
 end
 
 group :test do
