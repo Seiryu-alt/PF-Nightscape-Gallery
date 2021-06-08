@@ -12,4 +12,6 @@ class PostImage < ApplicationRecord
   validates :iso, numericality: { greater_than: 0, only_integer: true }
   validates :aperture, numericality: { greater_than: 0 }
   validates :shutter_speed, format: { with: SS_REGEXP, message: "シャッタースピードは0以上の数値または分数で入力してください" }
+  validates :user_id, presence: true
+  validates :image_id, presence: true
 end
