@@ -14,4 +14,7 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :follower
 
   attachment :profile_image_id
+
+  validates :mame, presence: true
+  validates :email, presence: true
 end
