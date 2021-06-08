@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_08_103205) do
+ActiveRecord::Schema.define(version: 2021_06_08_170200) do
 
   create_table "admin_users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2021_06_08_103205) do
     t.integer "post_image_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["post_image_id", "user_id"], name: "index_likes_on_post_image_id_and_user_id", unique: true
   end
 
   create_table "post_image_comments", force: :cascade do |t|
@@ -55,6 +56,7 @@ ActiveRecord::Schema.define(version: 2021_06_08_103205) do
     t.integer "followed_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["follower_id", "followed_id"], name: "index_Relationships_on_follower_id_and_followed_id", unique: true
   end
 
   create_table "tag_maps", force: :cascade do |t|
@@ -62,6 +64,7 @@ ActiveRecord::Schema.define(version: 2021_06_08_103205) do
     t.integer "post_image_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["post_image_id", "tag_id"], name: "index_tag_maps_on_post_image_id_and_tag_id", unique: true
   end
 
   create_table "tags", force: :cascade do |t|
