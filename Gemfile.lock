@@ -7,6 +7,12 @@ GIT
       rest-client (~> 2)
       sinatra (~> 2.0.0.beta2)
 
+GIT
+  remote: https://github.com/vigetlabs/active_material.git
+  revision: 54116c4650f889f9018b8cd9fdb30874b94454f4
+  specs:
+    active_material (1.5.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -337,6 +343,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_material!
   activeadmin
   bootsnap (>= 1.1.0)
   bootstrap (~> 4.5)

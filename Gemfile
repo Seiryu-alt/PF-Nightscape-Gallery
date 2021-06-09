@@ -82,3 +82,4 @@ gem 'font-awesome-sass', '~> 5.13'
 gem 'kaminari', '~> 0.17.0'
 gem 'activeadmin'
 gem 'dotenv-rails'
+gem "active_material", github: "vigetlabs/active_material"
