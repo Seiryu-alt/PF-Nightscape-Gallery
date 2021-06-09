@@ -45,3 +45,12 @@ Style/ClassAndModuleChildren:
 
 Style/StringLiterals:
   Enabled: false
+
+Lint/UnusedMethodArgument:
+  Enabled: false
+
+Style/SymbolArray:
+  Enabled: false
+
+Rails/LexicallyScopedActionFilter:
+  Enabled: false
