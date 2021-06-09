@@ -16,6 +16,7 @@ Style/EmptyMethod:
     - 'app/controllers/public/homes_controller.rb'
     - 'app/controllers/public/likes_controller.rb'
     - 'app/controllers/public/post_images_controller.rb'
+    - 'app/controllers/public/post_image_comments_controller.rb'
     - 'app/controllers/public/relationships_controller.rb'
     - 'app/controllers/public/tags_controller.rb'
     - 'app/controllers/public/users_controller.rb'
