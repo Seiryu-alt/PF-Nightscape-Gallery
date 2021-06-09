@@ -4,6 +4,7 @@ class PostImage < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :post_image_comments, dependent: :destroy
   has_many :tag_maps, dependent: :destroy
+  has_many :tags, through: :tag_maps
 
   attachment :image_id
 
