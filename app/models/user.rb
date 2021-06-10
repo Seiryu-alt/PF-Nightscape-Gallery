@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :likes, dependent: :destroy
+  has_many :like_post_images, through: :likes, source: :post_image
   has_many :post_images, dependent: :destroy
   has_many :post_image_comments, dependent: :destroy
 
@@ -43,5 +44,18 @@ class User < ApplicationRecord
 
   def following?(user)
     following_users.include?(user)
+  end
+
+  def like(post_image)
+    return if post_image.liked_by?(self)
+
+    Like.create(user_id: current_user.id, post_image_id: post_image.id)
+  end
+
+  def unlike(post_image)
+    return unless post_image.liked_by?(self)
+
+    like = Like.find_by(user_id: current_user.id, post_image_id: post_image.id)
+    like.destroy
   end
 end
