@@ -1,4 +1,7 @@
 class PostImage < ApplicationRecord
+  before_save :check_user
+  before_destroy :check_user
+
   belongs_to :user
 
   has_many :likes, dependent: :destroy
@@ -36,5 +39,11 @@ class PostImage < ApplicationRecord
     tags.each do |tag|
       remove_tag(tag.name) unless tag_names.include?(tag.name)
     end
+  end
+
+  private
+
+  def check_user
+    current_user.id == user_id
   end
 end
