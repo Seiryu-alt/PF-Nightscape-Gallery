@@ -15,4 +15,26 @@ class PostImage < ApplicationRecord
   validates :shutter_speed, format: { with: SS_REGEXP, message: "シャッタースピードは0以上の数値または分数で入力してください" }
   validates :user_id, presence: true
   validates :image_id, presence: true
+
+  def add_tag(tag_name)
+    tag = Tag.find_by(name: tag_name)
+    tag = Tag.create(name: tag_name) unless tag
+    TagMap.create(post_iamge_id: id, tag_id: tag.id)
+  end
+
+  def remove_tag(tag_name)
+    tag = Tag.find_by(name: tag_name)
+    tag_map = TagMap.find_by(tag_id: tag.id)
+    tag_map.destroy
+  end
+
+  def update_tag_from_list(tag_list)
+    tag_names = tag_list.split(',')
+    tag_names.each do |tag_name|
+      add_tag(tag_name)
+    end
+    tags.each do |tag|
+      remove_tag(tag.name) unless tag_names.include?(tag.name)
+    end
+  end
 end

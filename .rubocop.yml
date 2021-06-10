@@ -54,3 +54,6 @@ Style/SymbolArray:
 
 Rails/LexicallyScopedActionFilter:
   Enabled: false
+
+Style/OrAssignment:
+  Enabled: false
