@@ -12,7 +12,7 @@ class Public::PostImagesController < ApplicationController
   end
 
   def create
-    @post_image = PostImage.new(post_image_params)
+    @post_image = current_user.post_images.new(post_image_params)
     if @post_image.save
       @post_iamge.update_tag_from_list(params[:post_image][:tag_list])
       redirect_to post_image_path(@post_iamge.id)
