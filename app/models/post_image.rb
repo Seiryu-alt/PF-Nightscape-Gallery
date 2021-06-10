@@ -19,6 +19,10 @@ class PostImage < ApplicationRecord
   validates :user_id, presence: true
   validates :image_id, presence: true
 
+  def liked_by?(user)
+    likes.exists?(user_id: user.id)
+  end
+
   def add_tag(tag_name)
     tag = Tag.find_by(name: tag_name)
     tag = Tag.create(name: tag_name) unless tag
