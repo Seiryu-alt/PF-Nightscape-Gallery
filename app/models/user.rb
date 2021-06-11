@@ -20,21 +20,21 @@ class User < ApplicationRecord
   has_many :following_users, through: :active_relationships,  source: :followed
   has_many :follower_users,  through: :passive_relationships, source: :follower
 
-  attachment :profile_image_id
+  attachment :profile_image
 
-  validates :mame, presence: true
+  validates :name, presence: true
   validates :email, presence: true
 
   def follow(user)
-    return if current_user == user || following_users.include?(user)
+    return if self == user || following_users.include?(user)
 
-    Relationship.create(follower_id: current_user.id, followed_id: user.id)
+    Relationship.create(follower_id: id, followed_id: user.id)
   end
 
   def unfollow(user)
     return if following_users.exclude?(user)
 
-    relationship = Relationship.find_by(follower_id: current_user.id, followed_id: user.id)
+    relationship = Relationship.find_by(follower_id: id, followed_id: user.id)
     relationship.destroy
   end
 
@@ -49,13 +49,13 @@ class User < ApplicationRecord
   def like(post_image)
     return if post_image.liked_by?(self)
 
-    Like.create(user_id: current_user.id, post_image_id: post_image.id)
+    Like.create(user_id: id, post_image_id: post_image.id)
   end
 
   def unlike(post_image)
     return unless post_image.liked_by?(self)
 
-    like = Like.find_by(user_id: current_user.id, post_image_id: post_image.id)
+    like = Like.find_by(user_id: id, post_image_id: post_image.id)
     like.destroy
   end
 end
