@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   scope module: 'public' do
     root :to    => 'homes#top'
     get 'about' => 'homes#about'
+    get 'mypage' => 'users#mypage'
     resources :users, only: [:show] do
       resource :relationship, only: [:create, :destroy] do
         get 'following'
