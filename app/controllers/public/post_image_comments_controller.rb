@@ -11,13 +11,13 @@ class Public::PostImageCommentsController < ApplicationController
   end
 
   def destroy
-    post_iamge_comment = PostImageComment.find(params[:id])
-    post_iamge_comment.destroy
+    post_image_comment = PostImageComment.find(params[:id])
+    post_image_comment.destroy
   end
 
   private
 
   def post_image_comment_params
-    params.permit(:post_iamge_comment).require(:comment)
+    params.permit(:post_image_comment).require(:comment)
   end
 end
