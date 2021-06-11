@@ -1,7 +1,4 @@
 class PostImage < ApplicationRecord
-  before_save :check_user
-  before_destroy :check_user
-
   belongs_to :user
 
   has_many :likes, dependent: :destroy
@@ -9,7 +6,7 @@ class PostImage < ApplicationRecord
   has_many :tag_maps, dependent: :destroy
   has_many :tags, through: :tag_maps
 
-  attachment :image_id
+  attachment :image
 
   # シャッタースピードの正規表現 ex."20", "1/30"
   SS_REGEXP = %r{\A([1-9][0-9]*(\.[0-9]+)?\z|1/[1-9][0-9]*)\z}.freeze
@@ -17,7 +14,7 @@ class PostImage < ApplicationRecord
   validates :aperture, numericality: { greater_than: 0 }
   validates :shutter_speed, format: { with: SS_REGEXP, message: "シャッタースピードは0以上の数値または分数で入力してください" }
   validates :user_id, presence: true
-  validates :image_id, presence: true
+  validates :image, presence: true
 
   def liked_by?(user)
     likes.exists?(user_id: user.id)
@@ -43,11 +40,5 @@ class PostImage < ApplicationRecord
     tags.each do |tag|
       remove_tag(tag.name) unless tag_names.include?(tag.name)
     end
-  end
-
-  private
-
-  def check_user
-    current_user.id == user_id
   end
 end
