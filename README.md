@@ -18,10 +18,10 @@
 - 単純に夜景の写真を眺めたい時
 
 ## 設計書
-[ER図](https://drive.google.com/file/d/1kFuDlUoJfruFL1jyIg7eF68Byb62UYd2/view?usp=sharing)
+[ER図](https://drive.google.com/file/d/14PrMxaoYn2ppRLNxYk_JO6rL6GxtLIxq/view?usp=sharing)  
 [テーブル定義書](https://docs.google.com/spreadsheets/d/1UgG9aK01GtlJVVKHGJToKr46bjaz5hoXJbAfTOYDNy4/edit?usp=sharing)  
 [詳細設計書](https://docs.google.com/spreadsheets/d/1vGD-tOKSvF-goMIrU7N9BaZxHEw5Itgj0AkEbQNy1KM/edit?usp=sharing)  
-[UI Flow図（User側）](https://drive.google.com/file/d/1b_2-eOlD-lEJH-CkbYHK6WhaDeZvU_xY/view?usp=sharing)
+[UI Flow図](https://drive.google.com/file/d/1kFuDlUoJfruFL1jyIg7eF68Byb62UYd2/view?usp=sharing)
 
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/14X5FbRWlDfXpaDXgjg0kATsV3XE40eOQrCWgYm8RiHo/edit?usp=sharing
