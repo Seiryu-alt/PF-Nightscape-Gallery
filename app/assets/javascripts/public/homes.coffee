@@ -4,7 +4,7 @@
 
 $ ->
   $('.jscroll').jscroll
-    contentSelector: 'li'
+    contentSelector: '.jscroll li'
     nextSelector: 'span.next a'
     loadingHtml: '<div class="text-center"><div class="spinner-grow text-primary" role="status"></div></div>'
   return
