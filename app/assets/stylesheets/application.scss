@@ -15,3 +15,18 @@
 @import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "theme_1623473182695";
+
+.field_with_errors {
+  display: inline;
+  @extend .flex-grow-1;
+  input {
+    @extend .is-invalid;
+  }
+  textarea {
+    @extend .is-invalid;
+  }
+  select {
+    @extend .is-invalid;
+  }
+}
