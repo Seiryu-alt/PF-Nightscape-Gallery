@@ -8,11 +8,6 @@ class PostImage < ApplicationRecord
 
   attachment :image
 
-  # シャッタースピードの正規表現 ex."20", "1/30"
-  SS_REGEXP = %r{\A([1-9][0-9]*(\.[0-9]+)?\z|1/[1-9][0-9]*)\z}.freeze
-  validates :iso, numericality: { greater_than: 0, only_integer: true }
-  validates :aperture, numericality: { greater_than: 0 }
-  validates :shutter_speed, format: { with: SS_REGEXP, message: "シャッタースピードは0以上の数値または分数で入力してください" }
   validates :user_id, presence: true
   validates :image, presence: true
 
@@ -23,7 +18,7 @@ class PostImage < ApplicationRecord
   def add_tag(tag_name)
     tag = Tag.find_by(name: tag_name)
     tag = Tag.create(name: tag_name) unless tag
-    TagMap.create(post_iamge_id: id, tag_id: tag.id)
+    TagMap.create(post_image_id: id, tag_id: tag.id)
   end
 
   def remove_tag(tag_name)

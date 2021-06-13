@@ -17,6 +17,7 @@
 //= require rails-ujs
 //= require jquery.jscroll.min
 //= require tagsinput
+//= require geocomplete
 //= require activestorage
 //= require turbolinks
 //= require_tree .

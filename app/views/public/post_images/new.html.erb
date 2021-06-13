@@ -1,34 +1,37 @@
 <div class="container">
   <div class="row">
-    <div class="col-6 mx-auto">
-      <h2>新規投稿</h2>
+    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto p-3 bg-white rounded mt-sm-4">
+      <h2 class="mb-3">New Post</h2>
       <%= form_with model: @post_image, local: true do |f| %>
         <%= render 'shared/form_error', model: @post_image %>
         
-        <div class="form-group row">
-          <div class="col-12">
-            <div class="custom-file">
-              <%= f.attachment_field :image, class: "custom-file-input" %>
-              <%= f.label :image, "投稿画像を選択", class: "custom-file-label" %>
-            </div>
+        <div class="form-group">
+          <div class="custom-file">
+            <%= f.attachment_field :image, class: "custom-file-input" %>
+            <%= f.label :image, "投稿画像を選択", class: "custom-file-label" %>
           </div>
         </div>
-        <div class="form-group row">
-          <div class="col-12">
-            <%= f.text_area :description, placeholder: "説明を入力", class: "form-control" %>
-          </div>
+        <div class="form-group">
+          <%= f.text_area :description, placeholder: "説明を入力", class: "form-control" %>
         </div>
-        <div class="form-group row">
-          <div class="col-12">
+        <div class="form-group">
             <%= text_field_tag 'post_image[tag_list]', @post_image.tags.pluck(:name).join(","), placeholder: "タグを入力してEnter", data: {role: "tagsinput"} %>
-          </div>
         </div>
-
+        <div class="form-group">
+          <%= f.text_field :location_name, id: "geocomplete", class: "form-control" %>
+        </div>
+        <%= f.hidden_field :latitude, {'data-geo' => 'lat'} %>
+        <%= f.hidden_field :longitude, {'data-geo' => 'lng'} %>
+        <div class="form-group">
+          <div class="map_canvas embed-responsive embed-responsive-4by3"></div>
+        </div>
+        <%= f.submit "投稿", class: "btn btn-info" %>
       <% end %>
     </div>
   </div>
 </div>
 
+<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCF8Ado8T5l-tJW9aXsmwKu31_8a2uZQFw&libraries=places"></script>
 <script type="text/javascript">
   $('.custom-file input').change(function (e) {
       $('.custom-file-label').html(e.target.files[0].name);
@@ -43,5 +46,17 @@
     width: '100%', // standard option is 'auto'
     height: '100px', // standard option is 'auto'
     hide: true
+  });
+
+  $(document).on('turbolinks:load', function() {
+    $(function () {
+      $("#geocomplete").geocomplete({
+        map: ".map_canvas",
+        details: "form",
+        detailsAttribute: "data-geo",
+        types: ["geocode", "establishment"],
+        location: [<%= @post_image.latitude %>, <%= @post_image.longitude %>]
+      });
+    });
   });
 </script>

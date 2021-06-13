@@ -134,6 +134,8 @@ GEM
     formtastic (3.1.5)
       actionpack (>= 3.2.13)
     formtastic_i18n (0.7.0)
+    geocomplete_rails (1.7.0)
+      railties (>= 3.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     has_scope (0.8.0)
@@ -355,6 +357,7 @@ DEPENDENCIES
   dotenv-rails
   faker
   font-awesome-sass (~> 5.13)
+  geocomplete_rails
   jbuilder (~> 2.5)
   jquery-rails
   kaminari (~> 0.17.0)
