@@ -1,2 +1,47 @@
-<h1>Public::PostImages#new</h1>
-<p>Find me in app/views/public/post_images/new.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-6 mx-auto">
+      <h2>新規投稿</h2>
+      <%= form_with model: @post_image, local: true do |f| %>
+        <%= render 'shared/form_error', model: @post_image %>
+        
+        <div class="form-group row">
+          <div class="col-12">
+            <div class="custom-file">
+              <%= f.attachment_field :image, class: "custom-file-input" %>
+              <%= f.label :image, "投稿画像を選択", class: "custom-file-label" %>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-12">
+            <%= f.text_area :description, placeholder: "説明を入力", class: "form-control" %>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-12">
+            <%= text_field_tag 'post_image[tag_list]', @post_image.tags.pluck(:name).join(","), placeholder: "タグを入力してEnter", data: {role: "tagsinput"} %>
+          </div>
+        </div>
+
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $('.custom-file input').change(function (e) {
+      $('.custom-file-label').html(e.target.files[0].name);
+  });
+
+  $('.tagsinput').tagsinput({
+    interactive: true,
+    placeholder: 'タグを追加',
+    minChars: 2,
+    maxChars: 20, // if not provided there is no limit
+    limit: 5, // if not provided there is no limit
+    width: '100%', // standard option is 'auto'
+    height: '100px', // standard option is 'auto'
+    hide: true
+  });
+</script>
