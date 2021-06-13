@@ -50,7 +50,6 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 
   # 追加項目
-  gem 'faker'
   gem 'rubocop', require:false
   gem 'rubocop-rails', require:false
   gem 'pre-commit', require:false
@@ -83,3 +82,4 @@ gem 'kaminari', '~> 0.17.0'
 gem 'activeadmin'
 gem 'dotenv-rails'
 gem "active_material", github: "vigetlabs/active_material"
+gem 'faker'

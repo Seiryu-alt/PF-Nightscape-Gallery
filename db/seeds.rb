@@ -18,18 +18,37 @@ Faker::Config.locale = :ja
   )
 end
 
-28.times do |n|
-  user = User.order('RANDOM()').first
-  time = Faker::Time.between(from: DateTime.now - 3, to: DateTime.now)
-  PostImage.create!(
-    user_id: user.id,
-    description: Faker::Lorem.paragraph,
-    iso: rand(10000).ceil(-2),
-    aperture: rand(1..32).to_s,
-    shutter_speed: "1/#{rand(3200).ceil(-1).to_s}",
-    image: File.open("#{Rails.root}/app/assets/images/seed_image/test_image1/test_image (#{n+1}).jpg"),
-    created_at: time,
-    updated_at: time
-  )
+if Rails.env.development?
+  28.times do |n|
+    user = User.order('RANDOM()').first
+    time = Faker::Time.between(from: DateTime.now - 3, to: DateTime.now)
+    PostImage.create!(
+      user_id: user.id,
+      description: Faker::Lorem.paragraph,
+      iso: rand(10000).ceil(-2),
+      aperture: rand(1..32).to_s,
+      shutter_speed: "1/#{rand(3200).ceil(-1).to_s}",
+      image: File.open("#{Rails.root}/app/assets/images/seed_image/test_image1/test_image (#{n+1}).jpg"),
+      created_at: time,
+      updated_at: time
+    )
+  end
+end
+
+if Rails.env.production?
+  28.times do |n|
+    user = User.order('RAND()').first
+    time = Faker::Time.between(from: DateTime.now - 3, to: DateTime.now)
+    PostImage.create!(
+      user_id: user.id,
+      description: Faker::Lorem.paragraph,
+      iso: rand(10000).ceil(-2),
+      aperture: rand(1..32).to_s,
+      shutter_speed: "1/#{rand(3200).ceil(-1).to_s}",
+      image: File.open("#{Rails.root}/app/assets/images/seed_image/test_image1/test_image (#{n+1}).jpg"),
+      created_at: time,
+      updated_at: time
+    )
+  end
 end
 
