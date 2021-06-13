@@ -18,6 +18,6 @@ class Public::PostImageCommentsController < ApplicationController
   private
 
   def post_image_comment_params
-    params.permit(:post_image_comment).require(:comment)
+    params.require(:post_image_comment).permit(:comment)
   end
 end

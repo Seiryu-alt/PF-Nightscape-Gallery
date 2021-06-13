@@ -47,6 +47,6 @@ class Public::PostImagesController < ApplicationController
   private
 
   def post_image_params
-    params.permit(:post_image).require(:image, :description, :iso, :aperture, :shutter_speed)
+    params.require(:post_image).permit(:image, :description, :location_name, :latitude, :longitude)
   end
 end

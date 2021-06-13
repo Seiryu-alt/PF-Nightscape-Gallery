@@ -25,9 +25,6 @@ if Rails.env.development?
     PostImage.create!(
       user_id: user.id,
       description: Faker::Lorem.paragraph,
-      iso: rand(10000).ceil(-2),
-      aperture: rand(1..32).to_s,
-      shutter_speed: "1/#{rand(3200).ceil(-1).to_s}",
       image: File.open("#{Rails.root}/app/assets/images/seed_image/test_image1/test_image (#{n+1}).jpg"),
       created_at: time,
       updated_at: time
@@ -42,9 +39,6 @@ if Rails.env.production?
     PostImage.create!(
       user_id: user.id,
       description: Faker::Lorem.paragraph,
-      iso: rand(10000).ceil(-2),
-      aperture: rand(1..32).to_s,
-      shutter_speed: "1/#{rand(3200).ceil(-1).to_s}",
       image: File.open("#{Rails.root}/app/assets/images/seed_image/test_image1/test_image (#{n+1}).jpg"),
       created_at: time,
       updated_at: time
