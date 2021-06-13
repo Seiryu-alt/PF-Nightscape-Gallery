@@ -31,7 +31,7 @@
   </div>
 </div>
 
-<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCF8Ado8T5l-tJW9aXsmwKu31_8a2uZQFw&libraries=places"></script>
+<script src="http://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY'] %>&libraries=places"></script>
 <script type="text/javascript">
   $('.custom-file input').change(function (e) {
       $('.custom-file-label').html(e.target.files[0].name);
