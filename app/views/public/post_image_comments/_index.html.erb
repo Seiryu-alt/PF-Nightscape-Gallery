@@ -9,7 +9,7 @@
           <%= link_to user_path(comment.user), class: 'text-reset text-decoration-none' do %>
             <%= comment.user.name %>
           <% end %>
-          <span class="text-muted"><%= time_ago_in_words(comment.updated_at) %></span>
+          <span class="text-muted"><%= time_ago_in_words(comment.updated_at) %>前</span>
         </p>
         <%= comment.comment %>
         <% if comment.user == current_user %>
