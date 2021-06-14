@@ -1,2 +1,93 @@
-<h1>Public::PostImages#show</h1>
-<p>Find me in app/views/public/post_images/show.html.erb</p>
+<div class="container bg-white h-100">
+  <div class="row pt-3">
+    <div class="col-md-8">
+      <%= attachment_image_tag @post_image, :image, class: "img-fluid rounded" %>
+      <div class="media mt-3 p-2">
+        <%= link_to user_path(@post_image.user), class: 'text-reset text-decoration-none mr-2' do %>
+          <%= attachment_image_tag @post_image.user, :profile_image, :fill, 40, 40, size: '40x40', fallback: "no_profile_image.jpg", class: "rounded-circle mr-2" %>
+        <% end %>
+        <div class="media-body">
+          <h4>
+            <%= link_to user_path(@post_image.user), class: 'text-reset text-decoration-none' do %>
+              <%= @post_image.user.name %>
+            <% end %>
+          </h4>
+          <%= @post_image.description %>
+          <p class= "text-right mb-0">
+            <span class="like_button_<%= @post_image.id %> mr-1">
+              <%= render 'public/likes/button', post_image: @post_image %>
+            </span>
+            <span class="comment_button_<%= @post_image.id %> mr-1">
+              <%= render 'public/post_image_comments/button', post_image: @post_image %>
+            </span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="mb-3">
+        <h4 class="mb-2">Location</h4>
+        <% if @post_image.location? %>
+          <div id="map_canvas" class="embed-responsive embed-responsive-4by3"></div>
+        <% else%>
+          <p>未登録</p>
+        <% end %>
+      </div>
+
+      <div class="mb-3">
+        <h4 class="mb-2">Tags</h4>
+        <% if @post_image.tags.present? %>
+          <% @post_image.tags.each do |tag| %>
+            <%= link_to tag.name, tag_path(tag), class: "badge badge-warning p-2 mr-1" %>
+          <% end %>
+        <% else%>
+          <p>未登録</p>
+        <% end %>
+      </div>
+
+      <div class="mb-3">
+        <h4 class="mb-2">Date</h4>
+        <p><%= @post_image.created_at.strftime("%Y/%m/%d %H:%M:%S") %></p>
+      </div>
+
+      <% if @post_image.user == current_user %>
+        <div class="mb-3">
+          <%= link_to "編集する", edit_post_image_path(@post_image),'data-turbolinks': false, class: "btn btn-outline-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="row pt-2">
+    <div class="col-md-8">
+      <hr>
+      <h5><span class="comment_count_<%= @post_image.id %>"><%= @post_image.post_image_comments.size %></span>件のコメント</h5>
+      <% if user_signed_in? %>
+        <div class="post_image_comment_form_<%= @post_image.id %>">
+          <%= render 'public/post_image_comments/form', post_image: @post_image, new_comment: @new_comment %>
+        </div>
+      <% end %>
+      <div class="post_image_comments_<%= @post_image.id %>">
+        <%= render 'public/post_image_comments/index', post_image: @post_image %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function initMap() {
+    var latlng = new google.maps.LatLng(<%= @post_image.latitude %>, <%= @post_image.longitude %>);
+    const mapOptions = {
+      zoom: 8,
+      center: latlng,
+    };
+    var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+    var marker = new google.maps.Marker({
+       position: latlng,
+       map: map,
+       title:"撮影場所"
+    });
+  }
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY'] %>&callback=initMap&libraries=&v=weekly" async></script>

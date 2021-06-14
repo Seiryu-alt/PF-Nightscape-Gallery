@@ -3,7 +3,6 @@ class Public::PostImagesController < ApplicationController
 
   def show
     @post_image = PostImage.find(params[:id])
-    @comments = @post_image.post_image_comments
     @new_comment = PostImageComment.new
   end
 
