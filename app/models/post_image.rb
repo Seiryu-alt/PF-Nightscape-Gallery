@@ -36,4 +36,8 @@ class PostImage < ApplicationRecord
       remove_tag(tag.name) unless tag_names.include?(tag.name)
     end
   end
+
+  def location?
+    location_name.present? && latitude.present? && longitude.present?
+  end
 end

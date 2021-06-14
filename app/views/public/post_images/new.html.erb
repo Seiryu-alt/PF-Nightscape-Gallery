@@ -23,7 +23,7 @@
         <%= f.hidden_field :latitude, {'data-geo' => 'lat'} %>
         <%= f.hidden_field :longitude, {'data-geo' => 'lng'} %>
         <div class="form-group">
-          <div class="map_canvas embed-responsive embed-responsive-4by3"></div>
+          <div id="map_canvas" class="embed-responsive embed-responsive-4by3"></div>
         </div>
         <%= f.submit "投稿", class: "btn btn-info" %>
       <% end %>
@@ -48,15 +48,11 @@
     hide: true
   });
 
-  $(document).on('turbolinks:load', function() {
-    $(function () {
-      $("#geocomplete").geocomplete({
-        map: ".map_canvas",
-        details: "form",
-        detailsAttribute: "data-geo",
-        types: ["geocode", "establishment"],
-        location: [<%= @post_image.latitude %>, <%= @post_image.longitude %>]
-      });
-    });
+  $("#geocomplete").geocomplete({
+    map: "#map_canvas",
+    details: "form",
+    detailsAttribute: "data-geo",
+    types: ["geocode", "establishment"],
+    location: [<%= @post_image.latitude %>, <%= @post_image.longitude %>]
   });
 </script>
