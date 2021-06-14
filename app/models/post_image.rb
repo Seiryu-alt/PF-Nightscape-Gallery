@@ -23,7 +23,7 @@ class PostImage < ApplicationRecord
 
   def remove_tag(tag_name)
     tag = Tag.find_by(name: tag_name)
-    tag_map = TagMap.find_by(tag_id: tag.id)
+    tag_map = TagMap.find_by(post_image_id: id, tag_id: tag.id)
     tag_map.destroy
   end
 
@@ -32,6 +32,7 @@ class PostImage < ApplicationRecord
     tag_names.each do |tag_name|
       add_tag(tag_name)
     end
+    # byebug
     tags.each do |tag|
       remove_tag(tag.name) unless tag_names.include?(tag.name)
     end

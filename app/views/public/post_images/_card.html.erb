@@ -12,19 +12,21 @@
     <p class="card-text">
       <%= post_image.description %>
     </p>
-    <span class="like_button_<%= post_image.id %> mr-1">
-      <%= render 'public/likes/button', post_image: post_image %>
-    </span>
-    <span class="comment_button_<%= post_image.id %> mr-1">
-      <%= render 'public/post_image_comments/button', post_image: post_image %>
-    </span>
     <% post_image.tags.each do |tag| %>
       <%= link_to tag.name, tag_path(tag), class: "badge badge-warning p-1 mr-1" %>
     <% end %>
   </div>
-  <div class="card-footer bg-transparent border-0 pt-0">
+  <div class="card-footer bg-transparent border-0 pt-0 d-flex">
+    <div class="flex-grow-1">
+      <span class="like_button_<%= post_image.id %> mr-1">
+        <%= render 'public/likes/button', post_image: post_image %>
+      </span>
+      <span class="comment_button_<%= post_image.id %> mr-1">
+        <%= render 'public/post_image_comments/button', post_image: post_image %>
+      </span>
+    </div>
     <div class="text-muted text-right">
-      <%= time_ago_in_words(post_image.updated_at) %>
+      <%= time_ago_in_words(post_image.updated_at) %>前
     </div>
   </div>
 </div>

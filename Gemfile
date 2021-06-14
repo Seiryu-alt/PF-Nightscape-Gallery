@@ -84,3 +84,4 @@ gem 'dotenv-rails'
 gem "active_material", github: "vigetlabs/active_material"
 gem 'faker'
 gem 'geocomplete_rails'
+gem 'bootstrap4-kaminari-views'
