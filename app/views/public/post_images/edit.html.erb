@@ -8,9 +8,11 @@
         <div class="form-group">
           <%= f.text_area :description, placeholder: "説明を入力", class: "form-control" %>
         </div>
+
         <div class="form-group">
             <%= text_field_tag 'post_image[tag_list]', @post_image.tags.pluck(:name).join(","), placeholder: "タグを入力してEnter", data: {role: "tagsinput"} %>
         </div>
+
         <div class="form-group">
           <%= f.text_field :location_name, id: "geocomplete", class: "form-control" %>
         </div>
@@ -19,8 +21,14 @@
         <div class="form-group">
           <div id="map_canvas" class="embed-responsive embed-responsive-4by3"></div>
         </div>
-        <%= f.submit "保存", class: "btn btn-info" %>
-        <%= link_to "削除", post_image_path(@post_image), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-outline-danger"%>
+        
+        <div class="form-group d-flex">
+          <div class="mr-auto flex-grow-1">
+            <%= f.submit "保存", class: "btn btn-info" %>
+            <%= link_to "削除", post_image_path(@post_image), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-outline-danger"%>
+          </div>
+          <%= link_to "戻る", :back, class: "btn btn-outline-secondary" %>
+        </div>
       <% end %>
     </div>
   </div>
