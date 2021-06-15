@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row pt-3">
+    <div class="col-md-10 col-lg-8 mx-auto">
+      <ul class="px-0 jscroll">
+        <% @post_images.each do |post_image| %>
+          <li class="list-unstyled mb-3">
+            <%= render 'public/post_images/card', post_image: post_image %>
+          </li>
+        <% end %>
+        <li class="d-none">
+          <%= paginate @post_images %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  $(document).on('turbolinks:load', function() {
+    $(function () {
+      $('.jscroll').jscroll({
+        contentSelector: '.jscroll li',
+        nextSelector: 'span.next:last a',
+        loadingHtml: '<div class="text-center"><div class="spinner-grow text-primary" role="status"></div></div>'
+      });
+    });
+  });
+</script>
