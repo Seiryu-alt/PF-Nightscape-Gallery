@@ -2,8 +2,8 @@ class Public::LikesController < ApplicationController
   before_action :authenticate_user!, only: [:create, :destroy]
 
   def index
-    user = User.find(params[:user_id])
-    @post_images = user.like_post_images
+    @user = User.find(params[:user_id])
+    @post_images = @user.like_post_images.page(params[:page]).per(3)
   end
 
   def create
