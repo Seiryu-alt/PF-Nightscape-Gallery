@@ -4,7 +4,7 @@
     <h2 class="card-title pt-2"><%= user.name %></h2>
     <p class="card-text"><%= user.introduction %></p>
   </div>
-  <div class="card-body">
+  <div class="card-body pt-0">
     <p>
       <%= link_to following_user_relationship_path(user), class: "card-link" do %>
         <span class="following_count_<%= user.id %>"><%= user.following_users.size %></span>
