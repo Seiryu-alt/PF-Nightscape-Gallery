@@ -14,11 +14,14 @@
     <header>
       <%= render 'shared/header' %>
     </header>
-    <main class="flex-grow-1 bg-light" style="padding-top: 56px">
+    <div style="padding-top: 56px;">
+      <%= render "shared/flash_message" %>
+    </div>
+    <main class="flex-grow-1 bg-light">
       <%= yield %>
     </main>
     <footer>
-    
+
     </footer>
   </body>
 </html>

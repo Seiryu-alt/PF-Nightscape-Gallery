@@ -13,6 +13,7 @@ class Public::HomesController < ApplicationController
     @keyword = params[:keyword]
     if @keyword.blank?
       redirect_back fallback_location: root_path
+      flash[:alert] = "検索ワードを指定してください"
     else
       @users = find_users(@keyword).page(params[:user_page]).per(20)
       @post_images = find_post_images(@keyword).page(params[:post_image_page]).per(10)
