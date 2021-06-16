@@ -26,7 +26,7 @@ class Public::HomesController < ApplicationController
   end
 
   def find_post_images(keyword)
-    post_image_ids = PostImage.where("description LIKE?", "%#{keyword}%").pluck(:post_image_id)
+    post_image_ids = PostImage.where("description LIKE?", "%#{keyword}%").pluck(:id)
     tag_ids = Tag.where("name LIKE?", "%#{keyword}%").pluck(:id)
     post_image_ids += TagMap.where(tag_id: tag_ids).pluck(:post_image_id)
     post_image_ids.uniq!
