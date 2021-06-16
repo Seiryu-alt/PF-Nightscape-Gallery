@@ -37,8 +37,8 @@
           </li>
         <% end %>
       </ul>
-      <%= form_with url: search_post_images_path, method: :get, local: true, class: "form-inline my-2 my-lg-0" do |f| %>
-        <%= f.text_field :keyword, value: @keyword, class: "form-control mr-sm-2" %>
+      <%= form_with url: search_path, method: :get, local: true, class: "form-inline my-2 my-lg-0" do |f| %>
+        <%= f.text_field :keyword, value: @keyword, placeholder: "検索ワードを入力", class: "form-control mr-sm-2" %>
         <%= f.submit "検索", class: "btn btn-outline-light  my-2 my-sm-0" %>
       <% end %>
     </div>
