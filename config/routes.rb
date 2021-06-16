@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     root :to    => 'homes#top'
     get 'about' => 'homes#about'
     get 'mypage' => 'users#mypage'
+    get 'search' => 'homes#search'
+
     resources :users, only: [:show] do
       resource :relationship, only: [:create, :destroy] do
         get 'following'
@@ -17,9 +19,6 @@ Rails.application.routes.draw do
     end
 
     resources :post_images, only: [:show, :edit, :update, :destroy, :new, :create] do
-      collection do
-        get 'search'
-      end
       resources :post_image_comments, only: [:create, :destroy]
       resource :like, only: [:create, :destroy]
     end
