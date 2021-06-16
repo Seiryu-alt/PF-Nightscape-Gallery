@@ -17,11 +17,11 @@
     <div style="padding-top: 56px;">
       <%= render "shared/flash_message" %>
     </div>
-    <main class="flex-grow-1 bg-light">
+    <main class="flex-grow-1 bg-light pb-3">
       <%= yield %>
     </main>
-    <footer>
-
+    <footer class="bg-secondary">
+      <%= render 'shared/footer' %>
     </footer>
   </body>
 </html>
