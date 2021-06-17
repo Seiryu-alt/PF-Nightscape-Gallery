@@ -19,13 +19,13 @@ Faker::Config.locale = :ja
 end
 
 if Rails.env.development?
-  28.times do |n|
+  Dir.glob("#{Rails.root}/seed_image/*.jpg").each do |file_name|
     user = User.order('RANDOM()').first
     time = Faker::Time.between(from: DateTime.now - 3, to: DateTime.now)
     PostImage.create!(
       user_id: user.id,
       description: Faker::Lorem.paragraph,
-      image: File.open("#{Rails.root}/app/assets/images/seed_image/test_image1/test_image (#{n+1}).jpg"),
+      image: File.open(file_name),
       created_at: time,
       updated_at: time
     )
@@ -33,13 +33,13 @@ if Rails.env.development?
 end
 
 if Rails.env.production?
-  28.times do |n|
+  Dir.glob("#{Rails.root}/seed_image/*.jpg").each do |file_name|
     user = User.order('RAND()').first
-    time = Faker::Time.between(from: DateTime.now - 20, to: DateTime.now)
+    time = Faker::Time.between(from: DateTime.now - 3, to: DateTime.now)
     PostImage.create!(
       user_id: user.id,
       description: Faker::Lorem.paragraph,
-      image: File.open("#{Rails.root}/app/assets/images/seed_image/test_image1/test_image (#{n+1}).jpg"),
+      image: File.open(file_name),
       created_at: time,
       updated_at: time
     )
