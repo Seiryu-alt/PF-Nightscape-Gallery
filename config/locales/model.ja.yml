@@ -1,0 +1,13 @@
+ja:
+  activerecord:
+    models:
+      admin_user: 管理者ユーザー
+      post_image: 投稿画像
+      tag: タグ
+    attributes:
+      post_image:
+        image: 画像
+        description: 説明
+        location_name: 撮影場所
+      tag:
+        name: タグ名
