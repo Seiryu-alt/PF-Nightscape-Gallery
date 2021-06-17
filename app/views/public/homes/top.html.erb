@@ -3,7 +3,7 @@
     <% @most_liked_post_images.each_with_index do |post_image, index| %>
       <div class="carousel-item <%= index == 0 ? "active" : ""%>">
         <%= link_to post_image_path(post_image) do %>
-          <%= attachment_image_tag post_image, :image, :fill, 1000, 400, class: "d-block w-100" %>
+          <%= attachment_image_tag post_image, :image, :fill, 1500, 600, class: "d-block w-100" %>
         <% end %>
         <div class="container">
           <div class="carousel-caption text-left d-none d-md-block p-3 rounded" style="background-color: rgba(0,0,0,0.4)">
@@ -38,7 +38,7 @@
 <div class="container">
   <div class="row pt-3">
     <div class="col-md-10 col-lg-8 mx-auto">
-      <h2>最新の投稿</h2>
+      <h1>Latest Posts</h1>
       
       <ul class="px-0 jscroll">
         <% @post_images.each do |post_image| %>
