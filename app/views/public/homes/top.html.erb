@@ -6,22 +6,26 @@
           <%= attachment_image_tag post_image, :image, :fill, 1500, 600, class: "d-block w-100" %>
         <% end %>
         <div class="container">
-          <div class="carousel-caption text-left d-none d-md-block p-3 rounded" style="background-color: rgba(0,0,0,0.4)">
-            <h5>
-              <%= link_to user_path(post_image.user), class: 'text-reset text-decoration-none' do %>
-                <%= attachment_image_tag post_image.user, :profile_image, :fill, 30, 30, size: '30x30', fallback: "no_profile_image.jpg", class: "rounded-circle mr-2" %>
-                <%= post_image.user.name %>
-              <% end %>
-            </h5>
-            <p>
-              <%= post_image.description %>
-            </p>
-            <span class="like_button_<%= post_image.id %> mr-1">
-              <%= render 'public/likes/button', post_image: post_image %>
-            </span>
-            <span class="comment_button_<%= post_image.id %>">
-              <%= render 'public/post_image_comments/button', post_image: post_image %>
-            </span>
+          <div class="row">
+            <div class="col-md-10 col-lg-8 mx-auto">
+              <div class="carousel-caption text-left d-none d-md-block p-3 rounded" style="background-color: rgba(0,0,0,0.4)">
+                <h5>
+                  <%= link_to user_path(post_image.user), class: 'text-reset text-decoration-none' do %>
+                    <%= attachment_image_tag post_image.user, :profile_image, :fill, 30, 30, size: '30x30', fallback: "no_profile_image.jpg", class: "rounded-circle mr-2" %>
+                    <%= post_image.user.name %>
+                  <% end %>
+                </h5>
+                <p>
+                  <%= post_image.description %>
+                </p>
+                <span class="like_button_<%= post_image.id %> mr-1">
+                  <%= render 'public/likes/button', post_image: post_image %>
+                </span>
+                <span class="comment_button_<%= post_image.id %>">
+                  <%= render 'public/post_image_comments/button', post_image: post_image %>
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
