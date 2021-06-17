@@ -5,15 +5,15 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
 
 Faker::Config.locale = :ja
 
-5.times do |n|
+10.times do |n|
   User.create!(
     email: "test#{n}@example.com",
     password: 'password',
-    name: Faker::Name.name,
+    name: Faker::Internet.username,
     introduction: Faker::Lorem.paragraph
   )
 end
@@ -35,7 +35,7 @@ end
 if Rails.env.production?
   28.times do |n|
     user = User.order('RAND()').first
-    time = Faker::Time.between(from: DateTime.now - 3, to: DateTime.now)
+    time = Faker::Time.between(from: DateTime.now - 20, to: DateTime.now)
     PostImage.create!(
       user_id: user.id,
       description: Faker::Lorem.paragraph,
