@@ -6,7 +6,7 @@ class PostImage < ApplicationRecord
   has_many :tag_maps, dependent: :destroy
   has_many :tags, through: :tag_maps
 
-  attachment :image
+  attachment :image, destroy: true
 
   validates :user_id, presence: true
   validates :image, presence: true
