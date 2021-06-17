@@ -85,3 +85,5 @@ gem "active_material", github: "vigetlabs/active_material"
 gem 'faker'
 gem 'geocomplete_rails'
 gem 'bootstrap4-kaminari-views'
+gem 'rails-i18n'
+gem 'devise-i18n'
