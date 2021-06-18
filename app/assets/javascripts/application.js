@@ -16,6 +16,7 @@
 
 //= require rails-ujs
 //= require jquery.jscroll.min
+//= require vegas
 //= require tagsinput
 //= require geocomplete
 //= require activestorage
