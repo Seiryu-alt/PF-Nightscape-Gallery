@@ -19,4 +19,3 @@
 //= require tagsinput
 //= require geocomplete
 //= require activestorage
-//= require turbolinks
