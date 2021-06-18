@@ -1,3 +1,7 @@
+<% content_for :javascript_includes do %>
+  <%= javascript_include_tag "public/homes.js" %>
+<% end %>
+
 <div id="popularPostImageCrousel" class="carousel slide">
   <div class="carousel-inner">
     <% @most_liked_post_images.each_with_index do |post_image, index| %>
