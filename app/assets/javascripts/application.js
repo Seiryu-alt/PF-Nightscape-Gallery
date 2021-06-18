@@ -20,3 +20,4 @@
 //= require geocomplete
 //= require activestorage
 //= require turbolinks
+//= require_tree ./public
