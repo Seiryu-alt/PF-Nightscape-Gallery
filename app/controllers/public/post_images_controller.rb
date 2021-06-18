@@ -3,11 +3,15 @@ class Public::PostImagesController < ApplicationController
 
   def show
     @post_image = PostImage.find(params[:id])
+    gon.latitude = @post_image.latitude
+    gon.longitude = @post_image.longitude
     @new_comment = PostImageComment.new
   end
 
   def new
     @post_image = PostImage.new
+    gon.latitude = @post_image.latitude
+    gon.longitude = @post_image.longitude
   end
 
   def create
@@ -23,6 +27,8 @@ class Public::PostImagesController < ApplicationController
 
   def edit
     @post_image = PostImage.find(params[:id])
+    gon.latitude = @post_image.latitude
+    gon.longitude = @post_image.longitude
   end
 
   def update
