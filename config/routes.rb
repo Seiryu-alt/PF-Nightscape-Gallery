@@ -19,6 +19,9 @@ Rails.application.routes.draw do
     end
 
     resources :post_images, only: [:show, :edit, :update, :destroy, :new, :create] do
+      collection do
+        get 'maps'
+      end
       resources :post_image_comments, only: [:create, :destroy]
       resource :like, only: [:create, :destroy]
     end

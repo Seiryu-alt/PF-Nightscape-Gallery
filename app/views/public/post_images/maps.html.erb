@@ -1,0 +1,8 @@
+<% content_for :javascript_includes do %>
+  <%= javascript_include_tag "http://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_API_KEY']}&callback=initMap&libraries=&v=weekly", async: 'async' %>
+  <%= javascript_include_tag "public/post_image_maps.js" %>
+<% end %>
+
+<div class="container-fluid px-0" style="height: calc(100vh - 56px);">
+  <div id="map_canvas" class="embed-responsive h-100"></div>
+</div>

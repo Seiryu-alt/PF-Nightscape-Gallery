@@ -5,6 +5,7 @@ class Public::PostImagesController < ApplicationController
     @post_image = PostImage.find(params[:id])
     gon.latitude = @post_image.latitude
     gon.longitude = @post_image.longitude
+    gon.location_name = @post_image.location_name
     @new_comment = PostImageComment.new
   end
 
@@ -39,6 +40,17 @@ class Public::PostImagesController < ApplicationController
       redirect_to post_image_path(@post_image.id)
     else
       render :new
+    end
+  end
+
+  def maps
+    post_images = PostImage.where.not(location_name: [nil, ''], latitude: nil, longitude: nil)
+    gon.post_images = post_images.map do |post_image|
+      { id: post_image.id,
+        location_name: post_image.location_name,
+        longitude: post_image.longitude,
+        latitude: post_image.latitude,
+        image_url: Refile.attachment_url(post_image, :image, :fill, 150, 100) }
     end
   end
 

@@ -1,18 +1,20 @@
 function initMap() {
   var latlng = new google.maps.LatLng(gon.latitude, gon.longitude);
   const mapOptions = {
+    scrollwheel: true,
     zoom: 8,
     center: latlng,
   };
   var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
   var marker = new google.maps.Marker({
-     position: latlng,
-     map: map,
-     title:"撮影場所"
+    position: latlng,
+    map: map,
+    title: gon.location_name
   });
 }
 
-$(document).on('turbolinks:load', function () {
+
+$(function () {
   $('.custom-file input').change(function (e) {
     $('.custom-file-label').html(e.target.files[0].name);
   });
@@ -29,6 +31,9 @@ $(document).on('turbolinks:load', function () {
   });
 
   $("#geocomplete").geocomplete({
+    mapOptions: {
+      scrollwheel: true
+    },
     map: "#map_canvas",
     details: "form",
     detailsAttribute: "data-geo",
