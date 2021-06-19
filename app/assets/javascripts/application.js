@@ -18,5 +18,6 @@
 //= require jquery.jscroll.min
 //= require vegas
 //= require tagsinput
+//= require lightbox
 //= require geocomplete
 //= require activestorage
