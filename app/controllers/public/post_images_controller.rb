@@ -22,6 +22,8 @@ class Public::PostImagesController < ApplicationController
       flash[:notice] = "投稿しました"
       redirect_to post_image_path(@post_image.id)
     else
+      gon.latitude = @post_image.latitude
+      gon.longitude = @post_image.longitude
       render :new
     end
   end
@@ -39,6 +41,8 @@ class Public::PostImagesController < ApplicationController
       flash[:notice] = "変更を保存しました"
       redirect_to post_image_path(@post_image.id)
     else
+      gon.latitude = @post_image.latitude
+      gon.longitude = @post_image.longitude
       render :new
     end
   end
