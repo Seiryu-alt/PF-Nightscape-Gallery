@@ -4,6 +4,7 @@ class Public::HomesController < ApplicationController
                                       .sort_by { |post_image| post_image.likes.size }
                                       .last(5)
     gon.bg_img_urls = most_liked_post_images.map { |post_image| { src: Refile.attachment_url(post_image, :image) } }
+    gon.post_image_urls = most_liked_post_images.map { |post_image| post_image_path(post_image) }
     @post_images = PostImage.all.order(updated_at: :desc).page(params[:page]).per(3)
   end
 
