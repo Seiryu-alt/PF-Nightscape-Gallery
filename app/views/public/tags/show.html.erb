@@ -1,7 +1,9 @@
+<% content_for :title, "タグ「#{@tag.name}」の投稿一覧 - Nightscape Gallery" %>
+
 <div class="container">
   <div class="row pt-3">
     <div class="col-12 mb-3">
-      <h2>タグ「<%= @tag.name %>」を含む投稿一覧（<%= @post_images.total_count %>件）</h2>
+      <h2>タグ「<%= @tag.name %>」の投稿一覧（<%= @post_images.total_count %>件）</h2>
     </div>
 
     <% @post_images.each do |post_image| %>

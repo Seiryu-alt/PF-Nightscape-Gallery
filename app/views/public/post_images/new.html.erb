@@ -1,3 +1,5 @@
+<% content_for :title, "新規投稿 - Nightscape Gallery" %>
+
 <% content_for :javascript_includes do %>
   <%= javascript_include_tag "http://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_API_KEY']}&libraries=places" %>
   <%= javascript_include_tag "public/post_images.js" %>
