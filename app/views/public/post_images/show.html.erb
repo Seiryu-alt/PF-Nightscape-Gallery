@@ -9,7 +9,7 @@
   <div class="row pt-3">
     <div class="col-md-8">
       <%= link_to Refile.attachment_url(@post_image, :image, format: 'jpg'), "data-lightbox": @post_image.id do %>
-        <%= attachment_image_tag @post_image, :image, format: 'jpg', class: "w-100 img-fluid rounded" %>
+        <%= attachment_image_tag @post_image, :image, :limit, 1000, 1000, format: 'jpg', class: "w-100 img-fluid rounded" %>
       <% end %>
       <div class="media mt-3 p-2">
         <%= link_to user_path(@post_image.user), class: 'text-reset text-decoration-none mr-2' do %>

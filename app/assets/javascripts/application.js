@@ -19,5 +19,6 @@
 //= require vegas
 //= require tagsinput
 //= require lightbox
+//= require refile
 //= require geocomplete
 //= require activestorage
