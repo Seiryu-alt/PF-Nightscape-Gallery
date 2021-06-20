@@ -24,7 +24,7 @@ ActiveAdmin.register PostImage do
   show do
     attributes_table do
       row :image do |post_image|
-        attachment_image_tag post_image, :image
+        attachment_image_tag post_image, :image, :limit, 1000, 1000
       end
       row :user
       row :description
