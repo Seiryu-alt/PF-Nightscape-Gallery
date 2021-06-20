@@ -13,28 +13,34 @@
 
         <div class="form-group">
           <%= f.label :profile_image, 'プロフィール画像' %>
-          <div class="custom-file">
-              <%= f.attachment_field :profile_image, class: "custom-file-input" %>
+          <div class="custom-file mb-2">
+              <%= f.attachment_field :profile_image, presigned: true, class: "custom-file-input" %>
               <%= f.label :profile_image, "プロフィール画像を選択", class: "custom-file-label" %>
           </div>
-          <div id="preview" class="mt-2">
+          <% if @user.profile_image.present? %>
+            <div class="form-check mb-2">
+              <%= f.check_box :remove_profile_image, class: "form-check-input" %>
+              <%= f.label :remove_profile_image, "プロフィール画像を削除", class: "form-check-label" %>
+            </div>
+          <% end %>
+          <div id="preview">
             <%= attachment_image_tag @user, :profile_image, :fill, 500, 500, fallback: "no_profile_image.jpg", id: "preview-image", class: "rounded-circle" %>
           </div>
         </div>
 
         <div class="form-group">
           <%= f.label :name, 'ユーザー名' %>
-          <%= f.text_field :name, autofocus: true, class: "form-control" %>
+          <%= f.text_field :name, class: "form-control" %>
         </div>
 
         <div class="form-group">
           <%= f.label :introduction, 'プロフィールメッセージ' %>
-          <%= f.text_area :introduction, autofocus: true, class: "form-control" %>
+          <%= f.text_area :introduction, class: "form-control" %>
         </div>
 
         <div class="form-group">
           <%= f.label :email, 'メールアドレス' %>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+          <%= f.email_field :email, autocomplete: "email", class: "form-control" %>
         </div>
 
          <div class="form-group">
@@ -65,21 +71,21 @@
 </div>
 
 <style>
-#preview {
-  width: 50%;
-  position: relative;
-  margin: 0 auto;
-}
-#preview::before {
-  content: "";
-  display: block;
-  padding-top: 100%;
-}
-#preview img {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  object-fit: cover;
-}
+  #preview {
+    width: 50%;
+    position: relative;
+    margin: 0 auto;
+  }
+  #preview::before {
+    content: "";
+    display: block;
+    padding-top: 100%;
+  }
+  #preview img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    object-fit: cover;
+  }
 </style>

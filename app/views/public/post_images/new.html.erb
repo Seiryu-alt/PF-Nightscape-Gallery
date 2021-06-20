@@ -14,7 +14,7 @@
         
         <div class="form-group">
           <div class="custom-file">
-            <%= f.attachment_field :image, class: "custom-file-input" %>
+            <%= f.attachment_field :image, presigned: true, class: "custom-file-input" %>
             <%= f.label :image, "投稿画像を選択", class: "custom-file-label" %>
           </div>
         </div>
@@ -40,9 +40,3 @@
     </div>
   </div>
 </div>
-
-<style>
-  #preview-image{
-    width: 100%;
-  }
-</style>
