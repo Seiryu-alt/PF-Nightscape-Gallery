@@ -13,7 +13,6 @@ function initMap() {
   });
 }
 
-
 $(function () {
   $('.custom-file input').change(function (e) {
     $('.custom-file-label').html(e.target.files[0].name);
@@ -48,25 +47,5 @@ $(function () {
     detailsAttribute: "data-geo",
     types: ["geocode", "establishment"],
     location: [gon.latitude, gon.longitude]
-  });
-
-  $(document).on("upload:start", "form", function (e) {
-    $(this).find("input[type=submit]").attr("disabled", true);
-    return $("#progress-bar").slideDown('fast');
-  });
-  $(document).on("upload:progress", "form", function (e) {
-    var detail, percentComplete;
-    detail = e.originalEvent.detail.progress;
-    percentComplete = Math.round(detail.loaded / detail.total * 100);
-    console.log(percentComplete);
-    $("#progress-bar").width(percentComplete + "%");
-    return $("#progress-bar-text").text(percentComplete + "% Complete");
-  });
-  return $(document).on("upload:success", "form", function (e) {
-    if (!$(this).find("input.uploading").length) {
-      $(this).find("input[type=submit]").removeAttr("disabled");
-    }
-    console.log("complete");
-    return $("#progress-bar").slideUp('fast');
   });
 });
