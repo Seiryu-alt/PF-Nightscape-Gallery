@@ -21,7 +21,7 @@ class User < ApplicationRecord
   has_many :follower_users,  through: :passive_relationships, source: :follower
   has_one :profile_image, dependent: :destroy
 
-  attachment :profile_image, destroy: true
+  attachment :profile_image, destroy: true, content_type: ["image/jpeg", "image/png"]
 
   validates :name, presence: true
   validates :email, presence: true
