@@ -9,6 +9,9 @@
   <div class="row">
     <div class="col-sm-9 col-md-7 col-lg-5 mx-auto p-3 bg-white">
       <h2 class="mb-3">Edit Post</h2>
+      <div id="preview" class="mb-2">
+        <%= attachment_image_tag @post_image, :image, fallback: "no_image.png", class: "rounded w-100" %>
+      </div>
       <%= form_with model: @post_image, local: true do |f| %>
         <%= render 'shared/form_error', model: @post_image %>
         
