@@ -14,8 +14,13 @@
         
         <div class="form-group">
           <div class="custom-file">
-            <%= f.attachment_field :image, presigned: true, class: "custom-file-input" %>
+            <%= f.attachment_field :image, direct: true, presigned: true, class: "custom-file-input" %>
             <%= f.label :image, "投稿画像を選択", class: "custom-file-label" %>
+          </div>
+        </div>
+        <div class="progress mb-1" id='progress-bar' style='display:none;'>
+          <div class="progress-bar progress-bar-striped active" role="progressbar" style="width: 0%">
+            <span class="sr-only" id='progress-bar-text'></span>
           </div>
         </div>
         <div id="preview" class="mb-2">
