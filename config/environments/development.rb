@@ -70,4 +70,13 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.assets.precompile += ['public/*.js']
+
+  # bullet settings
+  config.after_initialize do
+    Bullet.enable = false
+    Bullet.bullet_logger = true
+    Bullet.console = true
+    Bullet.alert = true
+    Bullet.add_footer = true
+  end
 end

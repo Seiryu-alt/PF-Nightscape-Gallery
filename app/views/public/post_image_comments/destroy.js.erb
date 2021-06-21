@@ -1,3 +1,3 @@
 $('.post_image_comments_<%= @post_image.id %>').html("<%= j(render 'public/post_image_comments/index', post_image: @post_image) %>");
 $('.comment_button_<%= @post_image.id %>').html("<%= j(render 'public/post_image_comments/button', post_image: @post_image) %>");
-$('.comment_count_<%= @post_image.id %>').html("<%= @post_image.post_image_comments.size %>");
+$('.comment_count_<%= @post_image.id %>').html("<%= @post_image.post_image_comments_count %>");
