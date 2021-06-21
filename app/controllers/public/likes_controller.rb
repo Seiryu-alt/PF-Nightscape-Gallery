@@ -3,7 +3,7 @@ class Public::LikesController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
-    @post_images = @user.like_post_images.page(params[:page]).per(3)
+    @post_images = @user.like_post_images.includes(:user, :tags).page(params[:page]).per(3)
   end
 
   def create
