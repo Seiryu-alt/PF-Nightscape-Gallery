@@ -12,13 +12,11 @@
     <%= yield :javascript_includes %>
   </head>
 
-  <body class="vh-100 d-flex flex-column" style="overflow-y: scroll;">
-    <header>
+  <body class="d-flex flex-column" style="min-height: 100vh; overflow-y: scroll;">
+    <header id="header" class="fixed-top">
       <%= render 'shared/header' %>
-    </header>
-    <div style="padding-top: 56px;">
       <%= render "shared/flash_message" %>
-    </div>
+    </header>
     <main class="flex-grow-1 bg-light">
       <%= yield %>
     </main>

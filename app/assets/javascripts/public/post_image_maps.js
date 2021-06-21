@@ -1,3 +1,11 @@
+$(function () {
+  const resizeObserver = new ResizeObserver(entries => {
+    var height = $("#header").height();
+    $("#map-wrap").css("height", `calc(100vh - ${height}px)`);
+  });
+  resizeObserver.observe(document.getElementById('header'));
+});
+
 let map;
 let marker = []; // マーカーを複数表示させたいので、配列化
 let infoWindow = []; // 吹き出しを複数表示させたいので、配列化
