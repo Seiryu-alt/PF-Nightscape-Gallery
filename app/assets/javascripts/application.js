@@ -21,3 +21,13 @@
 //= require lightbox
 //= require geocomplete
 //= require activestorage
+//= require_self
+
+$(function () {
+  // ヘッダーの高さを監視
+  const resizeObserver = new ResizeObserver(entries => {
+    var height = $("#header").height();
+    $("body").css("padding-top", height);
+  });
+  resizeObserver.observe(document.getElementById('header'));
+});
