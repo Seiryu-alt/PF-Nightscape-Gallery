@@ -3,6 +3,7 @@ class Public::PostImagesController < ApplicationController
 
   def show
     @post_image = PostImage.find(params[:id])
+    @post_image_comments = @post_image.post_image_comments.includes(:user)
     gon.latitude = @post_image.latitude
     gon.longitude = @post_image.longitude
     gon.location_name = @post_image.location_name

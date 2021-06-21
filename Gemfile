@@ -53,6 +53,7 @@ group :development do
   gem 'rubocop', require:false
   gem 'rubocop-rails', require:false
   gem 'pre-commit', require:false
+  gem 'bullet'
 end
 
 group :test do
@@ -90,3 +91,4 @@ gem 'bootstrap4-kaminari-views'
 gem 'rails-i18n'
 gem 'devise-i18n'
 gem 'gon'
+gem 'counter_culture'

@@ -7,7 +7,7 @@ class Public::HomesController < ApplicationController
       { src: Refile.attachment_url(post_image, :image, :limit, 1000, 1000, format: 'jpg') }
     end
     gon.post_image_urls = most_liked_post_images.map { |post_image| post_image_path(post_image) }
-    @post_images = PostImage.all.order(updated_at: :desc).page(params[:page]).per(3)
+    @post_images = PostImage.all.order(updated_at: :desc).includes(:user, :tags).page(params[:page]).per(3)
   end
 
   def search
@@ -16,8 +16,8 @@ class Public::HomesController < ApplicationController
       redirect_back fallback_location: root_path
       flash[:alert] = "検索ワードを指定してください"
     else
-      @users = find_users(@keyword).page(params[:user_page]).per(20)
-      @post_images = find_post_images(@keyword).page(params[:post_image_page]).per(10)
+      @users = find_users(@keyword).includes(:follower_users).page(params[:user_page]).per(20)
+      @post_images = find_post_images(@keyword).includes(:user, :tags).page(params[:post_image_page]).per(10)
     end
   end
 
