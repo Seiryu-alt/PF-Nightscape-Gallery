@@ -70,7 +70,7 @@ if Rails.env.production?
     )
 
     users = User.order('RAND()').limit(rand(1..10))
-    urs.each do |user|
+    users.each do |user|
       user.like(post_image)
     end
     users = User.order('RAND()').limit(rand(1..10))
