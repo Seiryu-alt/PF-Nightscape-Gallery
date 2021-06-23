@@ -47,9 +47,11 @@ Dir.glob("#{Rails.root}/seed_image/*.jpg").each do |file_name|
     user.like(post_image)
   end
   users = User.order(RAND_FUNC).limit(rand(1..10))
-  PostImageComment.create!(
-    user_id: user.id,
-    post_image_id: post_image.id,
-    comment: Faker::Lorem.paragraph
-  )
+  users.each do |user|
+    PostImageComment.create!(
+      user_id: user.id,
+      post_image_id: post_image.id,
+      comment: Faker::Lorem.paragraph
+    )
+  end
 end
