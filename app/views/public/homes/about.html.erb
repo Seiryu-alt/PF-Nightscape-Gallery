@@ -1,0 +1,69 @@
+<div class="jumbotron jumbotron-fluid mb-0 bg-white">
+  <div class="container text-center">
+    <h1 class="mb-3">About Nightscape Gallery</h1>
+    <p class="mb-4">自慢の夜景写真を投稿してみませんか？</p>
+    <p>Nightscape Galleryは夜景写真の共有サイトです。</p>
+    <p></p>
+  </div>
+</div>
+
+<div class="jumbotron jumbotron-fluid mb-0 bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 d-flex flex-column justify-content-center px-4">
+        <h2 class="mb-3">新規登録</h2>
+        <p>夜景の投稿や、コメント、いいね機能を使うにはユーザー登録が必要です。</p>
+        <p class="text-right">
+          <%= link_to "新規登録", new_user_registration_path, class: "btn btn-sm btn-outline-secondary" %>
+        </p>
+      </div>
+      <div class="col-md-6">
+        <%= image_tag 'about/image5.jpg', class: "img-fluid" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="jumbotron jumbotron-fluid mb-0 bg-white">
+  <div class="container">
+    <div class="row flex-row-reverse">
+      <div class="col-md-6 d-flex flex-column justify-content-center px-4">
+        <h2 class="mb-3">夜景マップ</h2>
+        <p>地図から夜景を探してみましょう！</p>
+      </div>
+      <div class="col-md-6">
+        <%= image_tag 'about/image2.jpg', class: "img-fluid border border-light" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="jumbotron jumbotron-fluid mb-0 ">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 d-flex flex-column justify-content-center px-4">
+        <h2 class="mb-3">投稿詳細</h2>
+        <p>気になった投稿は詳細画面でチェック！</p>
+        <p>コメントを書いたり、「いいね」する事ができます。</p>
+      </div>
+      <div class="col-md-6">
+        <%= image_tag 'about/image3.jpg', class: "img-fluid border border-light" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="jumbotron jumbotron-fluid mb-0 bg-white">
+  <div class="container">
+    <div class="row flex-row-reverse">
+      <div class="col-md-6 d-flex flex-column justify-content-center px-4">
+        <h2 class="mb-3">ユーザープロフィール</h2>
+        <p>ユーザーの投稿や「いいね」した投稿をチェックしたり、プロフィールの確認ができます。</p>
+        <p>気になったユーザーはフォローしてみましょう！</p>
+      </div>
+      <div class="col-md-6">
+        <%= image_tag 'about/image4.jpg', class: "img-fluid border border-light" %>
+      </div>
+    </div>
+  </div>
+</div>
