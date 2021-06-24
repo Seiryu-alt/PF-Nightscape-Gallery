@@ -9,12 +9,20 @@ AdminUser.create!(email: 'admin@example.com', password: 'password', password_con
 
 Faker::Config.locale = :ja
 
+User.create!(
+  email: "guest@example.com",
+  password: 'password',
+  name: "Guest User",
+  introduction: "Guest User"
+)
+
 10.times do |n|
   User.create!(
     email: "test#{n}@example.com",
     password: 'password',
     name: Faker::Internet.username,
-    introduction: Faker::Lorem.paragraph
+    introduction: Faker::Lorem.paragraph,
+    profile_image: File.open("#{Rails.root}/seed_image/profile_image/profile_image (#{n+1}).jpg")
   )
 end
 
