@@ -21,6 +21,8 @@ class Public::HomesController < ApplicationController
     end
   end
 
+  def about; end
+
   private
 
   def find_users(keyword)
