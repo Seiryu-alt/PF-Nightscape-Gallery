@@ -18,8 +18,9 @@
           <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
         </div>
 
-        <div class="actions">
+        <div class="actions d-flex justify-content-between">
           <%= f.submit "Log in", class: "btn btn-primary" %>
+          <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: " btn btn-outline-primary" %>
         </div>
       <% end %>
     </div>

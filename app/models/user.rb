@@ -25,6 +25,15 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :email, presence: true
 
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |user|
+      user.password = "password"
+      user.password_confirmation = user.password
+      user.name = "Guest User"
+      user.introduction = "Guest User"
+    end
+  end
+
   def follow(user)
     return if self == user || following_users.include?(user)
 

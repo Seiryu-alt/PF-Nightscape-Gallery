@@ -2,7 +2,11 @@ Rails.application.routes.draw do
   devise_for :users, only: [:sessions, :registrations], controllers: {
     :sessions => 'public/users/sessions',
     :registrations => 'public/users/registrations'
-  }
+  } 
+  
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'public/users/sessions#new_guest'
+  end
 
   scope module: 'public' do
     root :to    => 'homes#top'
