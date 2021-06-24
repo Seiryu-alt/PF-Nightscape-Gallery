@@ -18,6 +18,13 @@ class Public::Users::SessionsController < Devise::SessionsController
   #   super
   # end
 
+  def new_guest
+    user = User.guest
+    sign_in user
+    flash[:notice] = "ゲストユーザーとしてログインしました。"
+    redirect_to root_path
+  end
+
   protected
 
   def after_sign_in_path_for(resource)
