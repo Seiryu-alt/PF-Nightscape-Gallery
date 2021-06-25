@@ -31,8 +31,9 @@ Rails.application.routes.draw do
     end
     
     resources :tags, only: [:show]
-  end
 
+    resources :notifications, only: [:index]
+  end
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

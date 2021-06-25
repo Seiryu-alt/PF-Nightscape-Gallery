@@ -5,4 +5,8 @@ class Relationship < ApplicationRecord
   validates :follower_id, presence: true
   validates :followed_id, presence: true
   validates :follower_id, uniqueness: { scope: :followed_id }
+
+  after_create do
+    Notification.create_follow(visitor: follower, visited: followed)
+  end
 end
