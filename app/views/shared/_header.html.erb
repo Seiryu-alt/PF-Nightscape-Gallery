@@ -3,7 +3,16 @@
     <%= link_to root_path, class: "navbar-brand" do %>
       Nightscape Gallery
     <% end %>
-    
+
+    <% if user_signed_in? %>
+      <div class="navbar-nav mr-auto">
+        <%= link_to notifications_path, class: "nav-link" do %>
+          <i class="far fa-bell"></i>
+          <span class="badge badge-pill badge-info align-middle"><%= current_user.passive_notifications.where(checked: false).size %></span>
+        <% end %>
+      </div>
+    <% end %>
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
