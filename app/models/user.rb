@@ -19,6 +19,14 @@ class User < ApplicationRecord
                                    dependent: :destroy
   has_many :following_users, through: :active_relationships,  source: :followed
   has_many :follower_users,  through: :passive_relationships, source: :follower
+  has_many :active_notifications, class_name: 'Notification',
+                                  foreign_key: 'visitor_id',
+                                  inverse_of: "visitor",
+                                  dependent: :destroy
+  has_many :passive_notifications, class_name: 'Notification',
+                                   foreign_key: 'visited_id',
+                                   inverse_of: "visited",
+                                   dependent: :destroy
 
   attachment :profile_image, destroy: true, content_type: ["image/jpeg", "image/png"]
 

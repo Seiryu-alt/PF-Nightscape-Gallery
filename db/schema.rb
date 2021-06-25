@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_21_144846) do
+ActiveRecord::Schema.define(version: 2021_06_25_101743) do
 
   create_table "admin_users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -30,6 +30,17 @@ ActiveRecord::Schema.define(version: 2021_06_21_144846) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_image_id", "user_id"], name: "index_likes_on_post_image_id_and_user_id", unique: true
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer "visitor_id", null: false
+    t.integer "visited_id", null: false
+    t.integer "post_image_id"
+    t.integer "post_image_comment_id"
+    t.integer "action", null: false
+    t.boolean "checked", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "post_image_comments", force: :cascade do |t|

@@ -5,6 +5,7 @@ class PostImage < ApplicationRecord
   has_many :post_image_comments, dependent: :destroy
   has_many :tag_maps, dependent: :destroy
   has_many :tags, through: :tag_maps
+  has_many :notifications, dependent: :destroy
 
   attachment :image, destroy: true, content_type: ["image/jpeg", "image/png"]
 
