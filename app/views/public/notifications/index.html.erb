@@ -1,0 +1,25 @@
+<% content_for :title, "通知 - Nightscape Gallery" %>
+<% content_for :javascript_includes do %>
+  <%= javascript_include_tag "public/notifications.js" %>
+<% end %>
+
+
+<div class="container d-flex flex-grow-1">
+  <div class="row flex-grow-1">
+    <div class="col-sm-10 col-md-8 col-lg-6 mx-auto pt-3 bg-white">
+      <h2 class="mb-3">通知</h2>
+      <% if @notifications.empty? %>
+        <p>通知がありません</p>
+      <% else %>
+        <ul class="list-unstyled px-0 jscroll">
+          <% @notifications.each do |notification| %>
+            <%= render 'public/notifications/media', notification: notification %>
+          <% end %>
+          <li class="d-none">
+            <%= paginate @notifications %>
+          </li>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+</div>

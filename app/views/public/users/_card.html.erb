@@ -1,0 +1,31 @@
+<div class="card border-0">
+  <div class="card-body">
+    <%= link_to user_path(user) do %>
+      <%= attachment_image_tag user, :profile_image, :fill, 100, 100, size: '100x100', fallback: "no_profile_image.jpg", class: "rounded-circle img-fluid" %>
+    <% end %>
+    <h2 class="card-title pt-2">
+      <%= link_to user.name, user_path(user) %>
+    </h2>
+    <p class="card-text"><%= user.introduction %></p>
+  </div>
+  <div class="card-body pt-0">
+    <p>
+      <%= link_to following_user_relationship_path(user), class: "card-link" do %>
+        <span class="following_count_<%= user.id %>"><%= user.following_users.size %></span>
+        <span class="text-muted">フォロー中</span>
+      <% end %>
+      <%= link_to follower_user_relationship_path(user), class: "card-link" do %>
+        <span class="follower_count_<%= user.id %>"><%= user.follower_users.size %></span>
+        <span class="text-muted">フォロワー</span>
+      <% end %>
+    </p>
+    <p>
+      <span class="follow_button_<%= user.id %>">
+        <%= render "public/relationships/button", user: user %>
+      </span>
+      <% if user == current_user %>
+        <%= link_to "登録情報編集", edit_user_registration_path, class: "btn btn-outline-primary" %>
+      <% end %>
+    </p>
+  </div>
+</div>

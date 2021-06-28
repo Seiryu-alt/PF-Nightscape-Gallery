@@ -1,0 +1,32 @@
+<% content_for :title, "ユーザープロフィール - Nightscape Gallery" %>
+
+<% content_for :javascript_includes do %>
+  <%= javascript_include_tag "public/relationships.js" %>
+<% end %>
+
+<div class="container h-100">
+  <div class="row pt-3">
+    <div class="col-md-4 mb-3">
+      <%= render "public/users/card", user: @user %>
+    </div>
+
+    <div class="col-md-8 pb-3">
+      <nav class="nav nav-pills nav-justified mb-2">
+        <%= link_to "フォロー中", following_user_relationship_path(@user), class: "nav-item nav-link" %>
+        <%= link_to "フォロワー", "#", class: "nav-item nav-link active" %>
+      </nav>
+
+      <ul class="px-0 list-group jscroll">
+        <% @follower_users.each do |user| %>
+          <li class="list-group-item">
+            <%= render "public/users/media", user: user %>
+          </li>
+        <% end %>
+        <li class="d-none">
+          <%= paginate @follower_users %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,47 @@
+<% content_for :title, "Nightscape Gallery" %>
+<% content_for :javascript_includes do %>
+  <%= javascript_include_tag "public/homes.js" %>
+<% end %>
+
+
+<div class="jumbotron jumbotron-fluid text-white jumbotron-bg">
+  <div class="container">
+    <h1 class="display-3 mb-5">Nightscape Gallery</h1>
+    <% if user_signed_in? %>
+      <%= link_to "My page", mypage_path, class: "btn btn-outline-light btn-lg" %>
+    <% else %>
+      <%= link_to "Learn more", about_path, class: "btn btn-outline-light btn-lg" %>
+      <%= link_to "Log in", new_user_session_path, class: "ml-2 btn btn-outline-light btn-lg" %>
+    <% end %>
+
+  </div>
+  <div class="container position-absolute mx-auto" style="bottom: 0; left: 0; right: 0;">
+    <p class="text-right pb-3">
+      <a class="text-white" id="top-image-link">
+        <small><u>画像の詳細</u></small>
+      </a>
+    </p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-lg-8 mx-auto">
+      <h1>Latest Posts</h1>
+      
+      <ul class="px-0 jscroll">
+        <% @post_images.each do |post_image| %>
+          <li class="list-unstyled mb-3">
+            <%= render 'public/post_images/card', post_image: post_image %>
+          </li>
+        <% end %>
+        <li class="d-none">
+          <%= paginate @post_images %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+

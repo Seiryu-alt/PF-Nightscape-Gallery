@@ -1,0 +1,18 @@
+<div class="media">
+  <%= link_to user_path(user), class: "mr-3" do %>
+    <%= attachment_image_tag user, :profile_image, :fill, 60, 60, size: '60x60', fallback: "no_profile_image.jpg", class: "rounded-circle img-fluid" %>
+  <% end %>
+  <div class="media-body">
+    <div class="d-flex align-items-center">
+      <%= link_to user_path(user), class: "" do %>
+        <h5 class="d-inline flex-grow-1 mb-0">
+          <%= link_to user.name, user_path(user), class: "" %>
+        </h5>
+      <% end %>
+      <span class="follow_button_<%= user.id %>">
+        <%= render "public/relationships/button", user: user %>
+      </span>
+    </div>
+    <p class="pt-1 mb-0"><%= user.introduction %></p>
+  </div>
+</div>

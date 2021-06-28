@@ -10,7 +10,24 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery3
+//= require popper
+//= require bootstrap-sprockets
+
 //= require rails-ujs
+//= require jquery.jscroll.min
+//= require vegas
+//= require tagsinput
+//= require lightbox
+//= require geocomplete
 //= require activestorage
-//= require turbolinks
-//= require_tree .
+//= require_self
+
+$(function () {
+  // ヘッダーの高さを監視
+  const resizeObserver = new ResizeObserver(entries => {
+    var height = $("#header").height();
+    $("body").css("padding-top", height);
+  });
+  resizeObserver.observe(document.getElementById('header'));
+});

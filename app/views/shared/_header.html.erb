@@ -1,0 +1,61 @@
+<nav class="navbar navbar-dark bg-primary navbar-expand-lg">
+  <div class="container">
+    <%= link_to root_path, class: "navbar-brand" do %>
+      Nightscape Gallery
+    <% end %>
+
+    <% if user_signed_in? %>
+      <div class="navbar-nav mr-auto">
+        <%= link_to notifications_path, class: "nav-link" do %>
+          <i class="far fa-bell"></i>
+          <span class="badge badge-pill badge-info align-middle"><%= current_user.passive_notifications.where(checked: false).size %></span>
+        <% end %>
+      </div>
+    <% end %>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <% if user_signed_in? %>
+          <%# userサインイン済み %>
+          <div class="nav-item">
+            <%= link_to "新規投稿", new_post_image_path, 'data-turbolinks': false, class: "nav-link" %>
+          </div>
+          <li class="nav-item">
+            <%= link_to "マイページ", mypage_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "夜景マップ", maps_post_images_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "プロフィール", user_path(current_user), class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %>
+          </li>
+        <% else %>
+          <%# userサインイン前 %>
+          <li class="nav-item">
+            <%= link_to "About", about_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "夜景マップ", maps_post_images_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "新規登録", new_user_registration_path, 'data-turbolinks': false, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "ログイン", new_user_session_path, class: "nav-link" %>
+          </li>
+        <% end %>
+      </ul>
+      <%= form_with url: search_path, method: :get, local: true, class: "form-inline my-2 my-sm-0" do |f| %>
+        <%= f.text_field :keyword, value: @keyword, placeholder: "検索ワードを入力", class: "form-control form-control-sm mr-sm-2" %>
+        <%= f.submit "検索", class: "btn btn-outline-light btn-sm my-2 my-sm-0" %>
+      <% end %>
+    </div>
+  </div>
+</nav>

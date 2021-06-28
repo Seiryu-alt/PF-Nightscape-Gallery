@@ -1,0 +1,40 @@
+<% content_for :title, "「#{@keyword}」の検索結果 - Nightscape Gallery" %>
+
+<div class="container">
+  <div class="row pt-3">
+    <div class="col-md-10 col-lg-8 mx-auto">
+      <nav class="nav nav-pills nav-justified mb-2">
+        <%= link_to "投稿画像", "#post_images_tab", class: "nav-item nav-link active", "data-toggle": "pill", "role": "tab" %>
+        <%= link_to "ユーザー", "#users_tab", class: "nav-item nav-link", "data-toggle": "pill", "role": "tab" %>
+      </nav>
+
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="post_images_tab" role="tabpanel" aria-labelledby="pills-home-tab">
+          <ul id="post_images" class="px-0">
+            <% @post_images.each do |post_image| %>
+              <li class="list-unstyled mb-3">
+                <%= render 'public/post_images/card', post_image: post_image %>
+              </li>
+            <% end %>
+            <li class="list-unstyled text-center">
+              <%= paginate @post_images, param_name: "post_image_page", theme: 'twitter-bootstrap-4', pagination_class: "pagination-sm", nav_class: "d-inline-block" %>
+            </li>
+          </ul>
+        </div>
+
+        <div class="tab-pane fade" id="users_tab" role="tabpanel" aria-labelledby="pills-home-tab">
+          <ul id="users" class="px-0 pb-3 list-group">
+            <% @users.each do |user| %>
+              <li class="list-group-item">
+                <%= render "public/users/media", user: user %>
+              </li>
+            <% end %>
+            <li class="list-unstyled text-center mt-3">
+              <%= paginate @users, param_name: "user_page", theme: 'twitter-bootstrap-4', pagination_class: "pagination-sm", nav_class: "d-inline-block" %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

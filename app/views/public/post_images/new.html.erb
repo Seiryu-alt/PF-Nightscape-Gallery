@@ -1,0 +1,42 @@
+<% content_for :title, "新規投稿 - Nightscape Gallery" %>
+
+<% content_for :javascript_includes do %>
+  <%= javascript_include_tag "http://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_API_KEY']}&libraries=places" %>
+  <%= javascript_include_tag "public/post_images.js" %>
+<% end %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto p-3 bg-white">
+      <h2 class="mb-3">New Post</h2>
+      <%= form_with model: @post_image, local: true do |f| %>
+        <%= render 'shared/form_error', model: @post_image %>
+        
+        <div class="form-group">
+          <div class="custom-file mb-2">
+            <%= f.attachment_field :image, presigned: true, class: "custom-file-input" %>
+            <%= f.label :image, "投稿画像を選択", class: "custom-file-label" %>
+          </div>
+          <div id="preview">
+            <%= attachment_image_tag @post_image, :image, fallback: "no_image.png", id: "preview-image", class: "rounded w-100" %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.text_area :description, placeholder: "説明を入力", class: "form-control" %>
+        </div>
+        <div class="form-group">
+            <%= text_field_tag 'post_image[tag_list]', @post_image.tags.pluck(:name).join(","), placeholder: "タグを入力してEnter", data: {role: "tagsinput"} %>
+        </div>
+        <div class="form-group">
+          <%= f.text_field :location_name, id: "geocomplete", class: "form-control" %>
+        </div>
+        <%= f.hidden_field :latitude, {'data-geo' => 'lat'} %>
+        <%= f.hidden_field :longitude, {'data-geo' => 'lng'} %>
+        <div class="form-group">
+          <div id="map_canvas" class="embed-responsive embed-responsive-4by3"></div>
+        </div>
+        <%= f.submit "投稿", class: "btn btn-info" %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,15 +1,27 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>NightscapeGallery</title>
+    <title><%= yield :title %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <%= favicon_link_tag('favicon.ico') %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= include_gon %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= yield :javascript_includes %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="d-flex flex-column" style="min-height: 100vh; overflow-y: scroll;">
+    <header id="header" class="fixed-top">
+      <%= render 'shared/header' %>
+      <%= render "shared/flash_message" %>
+    </header>
+    <main class="flex-grow-1 d-flex flex-column bg-light">
+      <%= yield %>
+    </main>
+    <footer class="bg-secondary">
+      <%= render 'shared/footer' %>
+    </footer>
   </body>
 </html>

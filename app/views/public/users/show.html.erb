@@ -1,0 +1,31 @@
+<% content_for :title, "ユーザープロフィール - Nightscape Gallery" %>
+<% content_for :javascript_includes do %>
+  <%= javascript_include_tag "public/users.js" %>
+<% end %>
+
+<div class="container h-100">
+  <div class="row pt-3">
+    <div class="col-md-4 mb-3">
+      <%= render "public/users/card", user: @user %>
+    </div>
+
+    <div class="col-md-8">
+      <nav class="nav nav-pills nav-justified mb-2">
+        <%= link_to "投稿画像", "#", class: "nav-item nav-link active" %>
+        <%= link_to "いいね", user_likes_path(@user), class: "nav-item nav-link" %>
+      </nav>
+
+      <ul class="px-0 jscroll">
+        <% @post_images.each do |post_image| %>
+          <li class="list-unstyled mb-3">
+            <%= render 'public/post_images/card', post_image: post_image %>
+          </li>
+        <% end %>
+        <li class="d-none">
+          <%= paginate @post_images %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+

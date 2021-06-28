@@ -1,0 +1,19 @@
+<% flash.each do |message_type, message| %>
+  <% alert_type = message_type == "notice" ? "success" : "danger" %>
+   <div class="w-100">
+    <div class="mb-0 border-0 rounded-0 alert alert-<%= alert_type %> fade show" >
+      <div class="container">
+        <div class="row">
+          <div class="col-10">
+            <%= message %>
+          </div>
+          <div class="col-2 text-right">
+            <a type="button" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
