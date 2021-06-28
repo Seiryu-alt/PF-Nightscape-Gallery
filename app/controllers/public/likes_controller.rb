@@ -7,12 +7,14 @@ class Public::LikesController < ApplicationController
   end
 
   def create
+    post_image = PostImage.find(params[:post_image_id])
+    current_user.like(post_image)
     @post_image = PostImage.find(params[:post_image_id])
-    current_user.like(@post_image)
   end
 
   def destroy
+    post_image = PostImage.find(params[:post_image_id])
+    current_user.unlike(post_image)
     @post_image = PostImage.find(params[:post_image_id])
-    current_user.unlike(@post_image)
   end
 end
