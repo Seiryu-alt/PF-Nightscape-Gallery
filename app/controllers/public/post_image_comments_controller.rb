@@ -2,11 +2,12 @@ class Public::PostImageCommentsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    @post_image = PostImage.find(params[:post_image_id])
     @new_comment = PostImageComment.new(post_image_comment_params)
     @new_comment.user_id = current_user.id
-    @new_comment.post_image_id = @post_image.id
-    return unless @new_comment.save
+    @new_comment.post_image_id = params[:post_image_id]
+    @new_comment.save
+    @post_image = PostImage.find(params[:post_image_id])
+    return if @new_comment.errors.any?
 
     @new_comment = PostImageComment.new
   end
